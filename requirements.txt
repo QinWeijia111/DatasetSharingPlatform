@@ -1,0 +1,52 @@
+# Django框架
+Django==5.0.3
+
+# 数据库驱动
+mysqlclient==2.2.4
+
+# 图像处理
+Pillow==10.2.0
+
+# 开发工具
+django-debug-toolbar==4.3.0
+
+# 环境变量管理
+python-dotenv==1.0.1
+
+# 时间处理
+pytz==2024.1
+
+# 密码加密
+bcrypt==4.1.2
+
+# 表单验证
+django-crispy-forms==2.1
+
+# 富文本编辑器
+django-ckeditor==6.7.1
+
+# API开发
+djangorestframework==3.14.0
+
+# 跨域资源共享
+django-cors-headers==4.3.1
+
+# 文件上传
+django-storages==1.14.2
+
+# 缓存支持
+django-redis==5.4.0
+
+# 异步任务
+celery==5.3.6
+
+# 测试工具
+pytest==8.0.2
+pytest-django==4.8.0
+
+# 代码格式化
+black==24.2.0
+flake8==7.0.0
+
+# 文档生成
+Sphinx==7.2.6 
