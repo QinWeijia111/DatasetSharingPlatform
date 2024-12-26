@@ -1,11 +1,104 @@
-本项目旨在打造一款面向深度学习的数据集共享和交流平台，在注册登录后用户可以按需搜索下载需要的数据集，查看不同类型的数据集以及对相关的数据集进行评论，并且可以上传共享自己的数据集，打造开源共享的深度学习共享数据集平台。
+# 深度学习数据集共享平台
 
-开发语言：Python
-开发工具：PyCharm
-数据库：openGauss
-运行环境：Django Development Server
-采用的主要架构技术及其它框架技术
-前后台技术：Bootstrap+Django
-数据库操作层技术：Django ORM
-依赖管理：Conda 
-框架：Django MVC
+基于 Django 5.0 开发的深度学习数据集共享平台,为研究人员提供数据集的分享与获取服务。
+
+## 技术栈
+
+- 后端框架: Django 5.0
+- 数据库: MySQL 5.7+
+- 前端框架: Bootstrap 5
+- 开发语言: Python 3.8+
+
+## 快速开始
+
+### 环境准备
+
+1. 安装 Python 3.8+
+2. 安装 MySQL 5.7+
+3. 创建虚拟环境(推荐)
+
+### 安装步骤
+
+1. 克隆项目
+
+```bash
+git clone [项目地址]
+cd DatasetsShareWeb
+```
+
+2. 安装依赖
+
+```bash
+pip install -r requirements.txt
+```
+
+3. 配置数据库
+
+```sql
+CREATE DATABASE datasetsharing CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+4. 修改配置
+
+- 复制 `database.cnf.example` 为 `database.cnf`
+- 修改数据库配置信息
+- 修改 `settings.py` 中的邮箱配置
+
+5. 数据库迁移
+
+```bash
+python manage.py migrate
+```
+
+6. 运行服务
+
+```bash
+python manage.py runserver
+```
+
+## 主要功能
+
+### 用户系统
+
+- [x] 邮箱注册
+- [x] 账号登录
+- [x] 记住登录状态
+
+### 数据集管理
+
+- [ ] 数据集上传
+- [ ] 数据集下载
+- [ ] 数据集分类
+- [ ] 数据集搜索
+
+### 用户面板
+
+- [ ] 个人信息管理
+- [ ] 已上传数据集管理
+- [ ] 下载记录查看
+
+## 项目结构
+
+```
+DatasetsShareWeb/
+├── DatasetsShareWeb/    # 项目配置
+├── qwjAuth/            # 用户认证
+├── sharingPlatform/    # 核心功能
+└── templates/         # 模板文件
+```
+
+## 开发计划
+
+- [ ] 完善数据集管理功能
+- [ ] 添加数据集评论功能
+- [ ] 实现数据集评分系统
+- [ ] 添加管理员后台
+- [ ] 优化用户界面
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request
+
+## 许可证
+
+MIT License
