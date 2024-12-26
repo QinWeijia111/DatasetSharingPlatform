@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'highlight/styles/github-dark-dimmed.min.css' %}">
+    <script src="{% static 'highlight/highlight.min.js' %}"></script>
+{% endblock %}
+{% block title %}
+    数据集详情
+{% endblock %}
+{% block main %}
+    <h1>{{ dataset.name }}</h1>
+    <hr>
+    <div>
+        <img src="{% static 'images/defaultAvatar.svg' %}" class="rounded-circle" height="30" width="30" alt="">
+        <span class="ms-1">{{ dataset.author.username }}</span>
+        <span class="ms-1">于</span>
+        <span class="ms-1">{{ dataset.pub_time|date:"Y年m月d日 H时i分" }}</span>发布
+        {% if request.user == dataset.author %}
+            <a href="{% url 'sharingPlatform:dataset_edit' dataset_id=dataset.id %}"
+               class="btn btn-primary">编辑数据集</a>
+            <a href="{% url 'sharingPlatform:dataset_delete' dataset_id=dataset.id %}"
+               class="btn btn-danger" onclick="return confirm('你确定要删除这个数据集吗？')">删除</a>
+        {% endif %}
+    </div>
+    <hr>
+    <div class="py-2">
+        <h2>{{ dataset.content|safe }}</h2>
+    </div>
+    {% if dataset.file %}
+        <div class="mt-2">
+            <a href="{% url 'sharingPlatform:download_dataset_file' dataset_id=dataset.id %}" class="btn btn-success">下载数据集</a>
+        </div>
+    {% endif %}
+    <hr>
+    <div class="mt-2">
+        <h3>评论（{{ dataset.comments.all|length }}）</h3>
+        <form action="{% url 'sharingPlatform:pub_comment' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="dataset_id" value="{{ dataset.id }}">
+            <div class="mt-2">
+                <input type="text" class="form-control" placeholder="请输入评论..." name="content">
+            </div>
+            <div class="text-end mt-2">
+                <button type="submit" class="btn btn-primary">发布评论</button>
+            </div>
+        </form>
+    </div>
+    <div class="mt-2">
+        <ul class="list-group list-group-flush">
+            {% for comment in dataset.comments.all %}
+                <li class="list-group-item mb-3">
+                    <div class="d-flex justify-content-between text-body-secondary">
+                        <div class="user-info">
+                            <img src="{% static 'images/defaultAvatar.svg' %}" class="rounded-circle" height="40"
+                                 width="40"
+                                 alt="">
+                            <span class="ms-2">{{ comment.author.username }}</span>
+                        </div>
+                        <div class="create-time" style="line-height: 40px">
+                            {{ comment.pub_time|date:"Y年m月d日 H时i分" }}
+                        </div>
+                    </div>
+                    <div class="mt-2">{{ comment.content }}</div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script>
+        hljs.highlightAll();
+    </script>
+
+{% endblock %}

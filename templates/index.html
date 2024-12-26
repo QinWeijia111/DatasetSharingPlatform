@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}深度学习共享数据集平台{% endblock %}
+{% block main %}
+    <h1>数据集列表</h1>
+    {% for category, datasets in datasets_grouped_by_category.items %}
+        <h2 class="mt-5">{{ category.name }}</h2>
+        <hr>
+        <div class="row row-cols-2 row-gap-2">
+            {% for dataset in datasets %}
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <a href="{% url 'sharingPlatform:dataset_details' dataset_id=dataset.id %}">{{ dataset.name }}</a>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ dataset.content|striptags|truncatechars:200 }}</p>
+                            <a href="{% url 'sharingPlatform:dataset_details' dataset_id=dataset.id %}"
+                               class="btn btn-primary">点击查看数据集详情</a>
+                            {% if user == dataset.author %}
+                                <a href="{% url 'sharingPlatform:dataset_delete' dataset_id=dataset.id %}"
+                                   class="btn btn-danger" onclick="return confirm('你确定要删除这个数据集吗？')">删除</a>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer text-body-secondary d-flex justify-content-between">
+                            <div>
+                                <img src="{% static 'images/defaultAvatar.svg' %}" class="rounded-circle" height="30"
+                                     width="30"
+                                     alt="">
+                                {{ dataset.author.username }}
+                            </div>
+                            <div>
+                                发布时间： {{ dataset.pub_time|date:"Y年m月d日 H时i分" }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

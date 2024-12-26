@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据集详情</title>
+    <link rel="stylesheet" href="{% static 'bootstrap5/bootstrap.min.css' %}">
+    <script src="{% static 'bootstrap5/popper.min.js' %}"></script>
+    <script src="{% static 'bootstrap5/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'CSS/base.css' %}">
+</head>
+<body>
+<header class="p-3 text-bg-light border-bottom mb-3">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="{% static 'images/share.svg' %}" alt="" height="40">
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-secondary">首页</a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary">分类数据集</a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary">上传数据集</a></li>
+                {#                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>#}
+                {#                <li><a href="#" class="nav-link px-2 text-white">About</a></li>#}
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control " placeholder="搜索数据集..."
+                       aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-primary me-2">登录</button>
+                <button type="button" class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="container bg-white p-3 rounded border-success-subtle">
+    <h1>CPP数据集</h1>
+    <hr>
+    <div>
+        <img src="{% static 'images/ironman.svg' %}" class="rounded-circle" height="30" width="30" alt="">
+        <span class="ms-1">qinweijia</span>
+        <span class="ms-1">于</span>
+        <span class="ms-1">2024年5月28日</span>发布
+    </div>
+    <hr>
+    <div class="py-2">
+        <h2>数据集详情</h2>
+    </div>
+    <hr>
+    <div class="mt-2">
+        <h3>评论（21）</h3>
+        <form action="" method="post">
+            <div class="mt-2">
+                <input type="text" class="form-control" placeholder="请输入评论...">
+            </div>
+            <div class="text-end mt-2">
+                <button type="button" class="btn btn-primary">发布评论</button>
+            </div>
+        </form>
+    </div>
+    <div class="mt-2">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item mb-3">
+                <div class="d-flex justify-content-between text-body-secondary">
+                    <div class="user-info">
+                        <img src="{% static 'images/ironman.svg' %}" class="rounded-circle" height="40" width="40"
+                             alt="">
+                        <span class="ms-2">qinweijia</span>
+                    </div>
+                    <div class="create-time" style="line-height: 40px">
+                        2024年5月28日
+                    </div>
+                </div>
+                <div class="mt-2">我是秦维嘉</div>
+            </li>
+        </ul>
+    </div>
+
+</main>
+</body>
+</html>
